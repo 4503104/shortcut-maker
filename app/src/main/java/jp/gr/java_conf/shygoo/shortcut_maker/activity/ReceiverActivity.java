@@ -127,8 +127,7 @@ public class ReceiverActivity extends AppCompatActivity {
 
         iconRes = R.drawable.ic_bookmark;
         name = sendIntent.getStringExtra(Intent.EXTRA_SUBJECT);
-        String type = "text/html";
-        component = SharedPreferencesUtil.loadDefaultComponent(this, type);
+        component = SharedPreferencesUtil.loadDefaultComponent(this, sendIntent.getType());
 
         viewIntent = new Intent(Intent.ACTION_VIEW, webpage);
     }
@@ -213,7 +212,7 @@ public class ReceiverActivity extends AppCompatActivity {
         shortcutIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, icon);
         sendBroadcast(shortcutIntent);
 
-        SharedPreferencesUtil.saveDefaultComponent(this, viewIntent.getType(), component);
+        SharedPreferencesUtil.saveDefaultComponent(this, getIntent().getType(), component);
 
         finish(R.string.message_succeeded);
     }
