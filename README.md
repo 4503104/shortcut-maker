@@ -2,7 +2,8 @@
 Create shortcut from sharing intent.
 
 ## Support
-- image/*
+- Image share intent
+- URL share intent
 
 ## Option
 - Can select app that open the intent.
