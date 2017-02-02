@@ -20,7 +20,8 @@
 
         <activity
             android:name=".activity.ReceiverActivity"
-            android:label="@string/receiver_name">
+            android:label="@string/receiver_name"
+            android:windowSoftInputMode="adjustResize|stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <category android:name="android.intent.category.DEFAULT" />

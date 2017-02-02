@@ -33,90 +33,96 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/main_area"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/footer_area"
-        android:layout_alignParentTop="true"
-        android:orientation="vertical">
-
-        <TextView
-            style="@style/MainLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/label_icon" />
-
-        <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/shortcut_icon"
-            style="@style/MainContent"
-            android:layout_width="32dp"
-            android:layout_height="32dp" />
-
-        <TextView
-            style="@style/MainLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/label_uri" />
-
-        <TextView
-            android:id="@+id/shortcut_uri"
-            style="@style/MainContent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            style="@style/MainLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/label_name" />
-
-        <EditText
-            android:id="@+id/shortcut_name"
-            style="@style/MainContent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:maxLines="1" />
-
-        <TextView
-            style="@style/MainLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/label_launch_by" />
+        android:layout_alignParentTop="true">
 
         <LinearLayout
-            style="@style/MainLabel"
+            android:id="@+id/main_area"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <RadioGroup
-                android:id="@+id/shortcut_type"
+            <TextView
+                style="@style/MainLabel"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:text="@string/label_icon" />
 
-                <RadioButton
-                    android:id="@+id/type_unspecified"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/launch_by_unspecified" />
-
-                <RadioButton
-                    android:id="@+id/type_specified"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/launch_by_specified" />
-
-            </RadioGroup>
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/shortcut_icon"
+                style="@style/MainContent"
+                android:layout_width="32dp"
+                android:layout_height="32dp" />
 
             <TextView
-                android:id="@+id/shortcut_component"
+                style="@style/MainLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_uri" />
+
+            <TextView
+                android:id="@+id/shortcut_uri"
+                style="@style/MainContent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
+            <TextView
+                style="@style/MainLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_name" />
+
+            <EditText
+                android:id="@+id/shortcut_name"
+                style="@style/MainContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:maxLines="1" />
+
+            <TextView
+                style="@style/MainLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_launch_by" />
+
+            <LinearLayout
+                style="@style/MainLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RadioGroup
+                    android:id="@+id/shortcut_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/type_unspecified"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/launch_by_unspecified" />
+
+                    <RadioButton
+                        android:id="@+id/type_specified"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/launch_by_specified" />
+
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/shortcut_component"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
         </LinearLayout>
 
-    </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>
