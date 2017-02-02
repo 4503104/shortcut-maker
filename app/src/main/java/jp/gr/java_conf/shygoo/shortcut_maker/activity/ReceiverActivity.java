@@ -10,6 +10,9 @@ import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatImageView;
 import android.text.TextUtils;
+import android.text.style.URLSpan;
+import android.text.util.Linkify;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -93,6 +96,7 @@ public class ReceiverActivity extends AppCompatActivity {
     }
 
     private void onReceive(Intent intent) {
+        Log.d("intent", intent.toString());
         String action = intent.getAction();
         String type = intent.getType();
         if (type == null) {
@@ -100,11 +104,33 @@ public class ReceiverActivity extends AppCompatActivity {
         }
         switch (action) {
             case Intent.ACTION_SEND:
-                if (type.startsWith("image/")) {
+                if ("text/plain".equals(type)) {
+                    handleSendText(intent);
+                } else if (type.startsWith("image/")) {
                     handleSendImage(intent);
                 }
                 break;
         }
+    }
+
+    private void handleSendText(Intent sendIntent) {
+        String sharedText = sendIntent.getStringExtra(Intent.EXTRA_TEXT);
+        TextView dummyText = new TextView(this);
+        dummyText.setText(sharedText);
+        Linkify.addLinks(dummyText, Linkify.WEB_URLS);
+        URLSpan[] urls = dummyText.getUrls();
+        if (urls == null || urls.length == 0) {
+            finish(R.string.error_not_supported);
+            return;
+        }
+        Uri webpage = Uri.parse(urls[0].getURL());
+
+        iconRes = R.drawable.ic_bookmark;
+        name = sendIntent.getStringExtra(Intent.EXTRA_SUBJECT);
+        String type = "text/html";
+        component = SharedPreferencesUtil.loadDefaultComponent(this, type);
+
+        viewIntent = new Intent(Intent.ACTION_VIEW, webpage);
     }
 
     private void handleSendImage(Intent sendIntent) {
