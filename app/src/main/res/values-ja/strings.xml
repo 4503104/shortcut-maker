@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">ショートカット作成くん</string>
+    <string name="receiver_name">ショートカットを作る</string>
+    <string name="button_create">作成</string>
+    <string name="label_uri">URL</string>
+    <string name="label_icon">アイコン</string>
+    <string name="label_name">ショートカット名</string>
+    <string name="label_launch_by">このアプリで開く</string>
+    <string name="name_default">ショートカット</string>
+    <string name="launch_by_specified">指定あり</string>
+    <string name="launch_by_unspecified">指定なし</string>
+    <string name="message_succeeded">作成しました。</string>
+    <string name="error_not_supported">非対応の形式です。</string>
+    <string name="error_create_failed">作成に失敗しました。</string>
+</resources>

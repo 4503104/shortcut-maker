@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Shortcut Maker</string>
+    <string name="receiver_name">Create a shortcut</string>
+    <string name="button_create">Create</string>
+    <string name="label_uri">URI</string>
+    <string name="label_icon">Icon</string>
+    <string name="label_name">Shortcut name</string>
+    <string name="label_launch_by">Launch by</string>
+    <string name="name_default">shortcut</string>
+    <string name="launch_by_specified">specified app</string>
+    <string name="launch_by_unspecified">unspecified</string>
+    <string name="message_succeeded">Created.</string>
+    <string name="error_not_supported">Not Supported.</string>
+    <string name="error_create_failed">Failed to create.</string>
+</resources>
