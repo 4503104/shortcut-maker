@@ -119,7 +119,11 @@ public class ReceiverActivity extends AppCompatActivity {
 
         shortcutIcon.setImageResource(iconRes);
         shortcutUri.setText(webpage.toString());
-        shortcutName.setText(sendIntent.getStringExtra(Intent.EXTRA_SUBJECT));
+        if (sendIntent.hasExtra(Intent.EXTRA_SUBJECT)) {
+            shortcutName.setText(sendIntent.getStringExtra(Intent.EXTRA_SUBJECT));
+        } else {
+            shortcutName.setText(sharedText.split("\\s+")[0]);
+        }
         setComponent(component);
     }
 
