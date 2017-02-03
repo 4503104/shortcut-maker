@@ -51,9 +51,6 @@ public class ReceiverActivity extends AppCompatActivity {
     Intent viewIntent;
 
     @State
-    CharSequence name;
-
-    @State
     ComponentName component;
 
     @State
@@ -80,18 +77,8 @@ public class ReceiverActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        shortcutIcon.setImageResource(iconRes);
-        shortcutUri.setText(viewIntent.getData().toString());
-        shortcutName.setText(name);
-        setComponent(component);
-    }
-
-    @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        name = shortcutName.getText();
         Icepick.saveInstanceState(this, outState);
     }
 
@@ -126,10 +113,14 @@ public class ReceiverActivity extends AppCompatActivity {
         Uri webpage = Uri.parse(urls[0].getURL());
 
         iconRes = R.drawable.ic_bookmark;
-        name = sendIntent.getStringExtra(Intent.EXTRA_SUBJECT);
         component = SharedPreferencesUtil.loadDefaultComponent(this, sendIntent.getType());
 
         viewIntent = new Intent(Intent.ACTION_VIEW, webpage);
+
+        shortcutIcon.setImageResource(iconRes);
+        shortcutUri.setText(webpage.toString());
+        shortcutName.setText(sendIntent.getStringExtra(Intent.EXTRA_SUBJECT));
+        setComponent(component);
     }
 
     private void handleSendImage(Intent sendIntent) {
@@ -141,12 +132,16 @@ public class ReceiverActivity extends AppCompatActivity {
         }
 
         iconRes = R.drawable.ic_image;
-        name = imageUri.getLastPathSegment();
         String type = sendIntent.getType();
         component = SharedPreferencesUtil.loadDefaultComponent(this, type);
 
         viewIntent = new Intent(Intent.ACTION_VIEW);
         viewIntent.setDataAndType(imageUri, type);
+
+        shortcutIcon.setImageResource(iconRes);
+        shortcutUri.setText(imageUri.toString());
+        shortcutName.setText(imageUri.getLastPathSegment());
+        setComponent(component);
     }
 
     @OnClick({R.id.type_specified, R.id.type_unspecified})
